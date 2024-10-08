@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".ux.image.ProfileFragment">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:layout_width="200sp"
+        android:layout_height="200sp"
+        android:id="@+id/imageView"
+        app:shapeAppearanceOverlay="@style/roundedImageView"
+        layout_centerInParent="true"
+        android:scaleType="centerCrop" />
+
+
+    <Button
+        android:id="@+id/changeBackgroundButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cambiar Fondo" />
+
+    <Button
+        android:id="@+id/changeTextColorButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cambiar Color Texto" />
+
+    <Button
+        android:id="@+id/changePlaceholderButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cambiar Placeholder" />
+
+</LinearLayout>
