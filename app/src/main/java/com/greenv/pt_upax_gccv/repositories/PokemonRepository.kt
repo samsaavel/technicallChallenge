@@ -16,14 +16,11 @@ interface PokemonRepositoryContract {
     ): NetworkResponse<PokemonResponse>
 
     suspend fun getPokemonDetails(id: Int): NetworkResponse<DetailsModel>
+
+    suspend fun updateFavoriteStatus(pokemonId: Int, isFavorite: Boolean)
 }
 
 class PokemonRepository(
-//    val pokemonApi: PokemonListApi,
-//    val detailsApi: PokemonDetailsApi,
-//    val generationApi: GenerationApi,
-//    val pokemonDao: PokemonDao,
-    //private val context: Context,
     private val dataSync: DataSyncManager,
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO,
 ) : PokemonRepositoryContract {
@@ -65,7 +62,6 @@ class PokemonRepository(
                     Log.d("*****PokeRepo", "Pokemon details not found")
                     return@withContext NetworkResponse.Failure
                 }
-                //val response = detailsApi.getDetails(id)
                 Log.d("*****PokeRepo", "getDetailsPokemon success")
                 NetworkResponse.Success(details)
             } catch (e: Throwable) {
@@ -74,4 +70,10 @@ class PokemonRepository(
                 NetworkResponse.Failure
             }
         }
+
+    override suspend fun updateFavoriteStatus(pokemonId: Int, isFavorite: Boolean) {
+        withContext(dispatcher) {
+            dataSync.updateFavoriteStatus(pokemonId, isFavorite)
+        }
+    }
 }

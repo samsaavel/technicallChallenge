@@ -56,6 +56,7 @@ data class DetailsModel(
     val id: Int,
     @SerializedName("name")
     val name: String,
+    var isFavorite: Boolean = false,
 )
 
 data class Sprite(

@@ -21,7 +21,7 @@
     <fragment
         android:id="@+id/profile_fragment"
         android:name="com.greenv.pt_upax_gccv.ux.image.ProfileFragment"
-        android:label="fragment_profile"
+        android:label="Profile"
         tools:layout="@layout/fragment_profile">
         <action
             android:id="@+id/action_profileFragment_to_option_fragment"
@@ -31,7 +31,7 @@
     <fragment
         android:id="@+id/list_fragment"
         android:name="com.greenv.pt_upax_gccv.ux.pokemon.list.ListFragment"
-        android:label="fragment_list"
+        android:label="Pokemon List"
         tools:layout="@layout/fragment_list">
         <action
             android:id="@+id/action_listFragment_to_detailsFragment"
@@ -44,7 +44,7 @@
     <fragment
         android:id="@+id/detailsFragment"
         android:name="com.greenv.pt_upax_gccv.ux.pokemon.details.DetailsFragment"
-        android:label="fragment_details"
+        android:label="Pokemon details"
         tools:layout="@layout/fragment_details">
         <action
             android:id="@+id/action_detailsFragment_to_listFragment"

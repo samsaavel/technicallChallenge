@@ -107,11 +107,13 @@ class DataSyncManager(
             if (newEntities.isNotEmpty()) {
                 pokemonDao.insertAll(newEntities)
             }
-            //pokemonDao.insertAll(pokemonEntities)
         } catch (e: Exception) {
             Log.d("*****DataSync", "error: ${e.printStackTrace()}")
             null
         }
     }
 
+    suspend fun updateFavoriteStatus(pokemonId: Int, isFavorite: Boolean) {
+        pokemonDao.updateFavoriteStatus(pokemonId, isFavorite)
+    }
 }

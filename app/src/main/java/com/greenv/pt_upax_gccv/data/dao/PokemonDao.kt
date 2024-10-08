@@ -20,4 +20,7 @@ interface PokemonDao {
 
     @Query("SELECT * FROM pokemon_table WHERE pokedexId = :id LIMIT 1 ")
     suspend fun getPokemonById(id: Int): PokemonEntity?
+
+    @Query("UPDATE pokemon_table SET isFavorite = :isFavorite WHERE pokedexId = :id")
+    suspend fun updateFavoriteStatus(id: Int, isFavorite: Boolean)
 }

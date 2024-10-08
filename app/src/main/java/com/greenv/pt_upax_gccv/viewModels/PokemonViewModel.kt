@@ -74,4 +74,16 @@ class PokemonViewModel(private val pokemonRepository: PokemonRepositoryContract)
         }
     }
 
+    fun markAsFavorite(pokemonId: Int) {
+        viewModelScope.launch {
+            pokemonRepository.updateFavoriteStatus(pokemonId, true)
+        }
+    }
+
+    fun unmarkAsFavorite(pokemonId: Int) {
+
+        viewModelScope.launch {
+            pokemonRepository.updateFavoriteStatus(pokemonId, false)
+        }
+    }
 }

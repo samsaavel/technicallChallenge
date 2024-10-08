@@ -84,6 +84,9 @@ dependencies {
     implementation "androidx.room:room-ktx:2.6.1"
     kapt("androidx.room:room-compiler:2.6.1")
 
+    //liveData
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.6.0"
+
     implementation "org.jetbrains.kotlin:kotlin-stdlib:1.7.20"
     implementation "androidx.core:core-ktx:1.13.1"
     implementation "com.google.android.material:material:1.6.1"

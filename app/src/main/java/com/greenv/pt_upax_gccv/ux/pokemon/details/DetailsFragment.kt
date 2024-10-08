@@ -60,8 +60,8 @@ class DetailsFragment : Fragment() {
         val args: DetailsFragmentArgs by navArgs()
         viewModel.getDetailsPokemon(args.id)
         typeAdapter = TypeAdapter(arrayListOf())
-        binding.typeRecycler.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+//        binding.typeRecycler.layoutManager =
+//            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         Log.d("*****PokemonDetails", "calls to services")
         observeViewModel()
         Log.d("*****PokemonDetails", "after observing viewmodel")
@@ -107,20 +107,26 @@ class DetailsFragment : Fragment() {
 
     private fun setupRecyclerView(details: DetailsModel) {
         val availableList = details.sprites.getAvailableUrls()
-        val types = details.types.map { it.type }
+        val types: String = details.types.map { it.type.name }.toString()
 
-        binding.name.append(details.name)
+//        if (types.isNotEmpty()) {
+//            typeAdapter = TypeAdapter(types)
+//            binding.typeRecycler.adapter = typeAdapter
+//            typeAdapter.notifyDataSetChanged()
+//        }
+        binding.typeDesc.text = types
         binding.id.append(details.id.toString())
         binding.height.append(details.height.toString())
         binding.weight.append(details.weight.toString())
         imageSliderAdapter = ImageSliderAdapter(availableList)
         binding.imageSlider.adapter = imageSliderAdapter
-        typeAdapter = TypeAdapter(types)
-        typeAdapter.notifyDataSetChanged()
-//        Log.d("*****PokemonDetails", "types: $types")
-        binding.typeRecycler.adapter = typeAdapter
-//        typeAdapter = TypeAdapter(types)
-
-
+        binding.favorite.isChecked = details.isFavorite
+        binding.favorite.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                viewModel.markAsFavorite(details.id)
+            } else {
+                viewModel.unmarkAsFavorite(details.id)
+            }
+        }
     }
 }
